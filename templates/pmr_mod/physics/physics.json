@@ -1,0 +1,164 @@
+{
+  "mass": {{MASS}},
+  "inertia": {
+    "x": {{INERTIA_X}},
+    "y": {{INERTIA_Y}},
+    "z": {{INERTIA_Z}}
+  },
+  "center_of_mass": {
+    "x": {{CM_X}},
+    "y": {{CM_Y}},
+    "z": {{CM_Z}}
+  },
+  "aerodynamics": {
+    "drag_coefficient": {{DRAG_COEFFICIENT}},
+    "lift_coefficient": {{LIFT_COEFFICIENT}},
+    "front_area": {{FRONT_AREA}},
+    "rear_wing": {{REAR_WING}}
+  },
+  "suspension": {
+    "front": {
+      "spring_rate": {{FRONT_SPRING_RATE}},
+      "damping": {{FRONT_DAMPING}},
+      "travel": {{FRONT_TRAVEL}},
+      "anti_roll_bar": {{FRONT_ANTI_ROLL_BAR}},
+      "camber": {{FRONT_CAMBER}},
+      "toe": {{FRONT_TOE}},
+      "caster": {{FRONT_CASTER}}
+    },
+    "rear": {
+      "spring_rate": {{REAR_SPRING_RATE}},
+      "damping": {{REAR_DAMPING}},
+      "travel": {{REAR_TRAVEL}},
+      "anti_roll_bar": {{REAR_ANTI_ROLL_BAR}},
+      "camber": {{REAR_CAMBER}},
+      "toe": {{REAR_TOE}}
+    }
+  },
+  "wheels": {
+    "front": {
+      "radius": {{FRONT_WHEEL_RADIUS}},
+      "width": {{FRONT_WHEEL_WIDTH}},
+      "pressure": {{FRONT_WHEEL_PRESSURE}},
+      "rim_radius": {{FRONT_RIM_RADIUS}},
+      "rim_width": {{FRONT_RIM_WIDTH}}
+    },
+    "rear": {
+      "radius": {{REAR_WHEEL_RADIUS}},
+      "width": {{REAR_WHEEL_WIDTH}},
+      "pressure": {{REAR_WHEEL_PRESSURE}},
+      "rim_radius": {{REAR_RIM_RADIUS}},
+      "rim_width": {{REAR_RIM_WIDTH}}
+    }
+  },
+  "engine": {
+    "max_power": {{MAX_POWER}},
+    "max_torque": {{MAX_TORQUE}},
+    "max_rpm": {{MAX_RPM}},
+    "idle_rpm": {{IDLE_RPM}},
+    "torque_curve": {{TORQUE_CURVE}},
+    "power_curve": {{POWER_CURVE}},
+    "inertia": {{ENGINE_INERTIA}},
+    "response_rate": {{ENGINE_RESPONSE_RATE}}
+  },
+  "transmission": {
+    "gear_ratios": {{GEAR_RATIOS}},
+    "final_drive": {{FINAL_DRIVE}},
+    "shift_time": {{SHIFT_TIME}},
+    "shift_speed": {{SHIFT_SPEED}},
+    "reverse_gear_ratio": {{REVERSE_GEAR_RATIO}},
+    "differential": {
+      "type": "{{DIFFERENTIAL_TYPE}}",
+      "lock": {{DIFFERENTIAL_LOCK}}
+    }
+  },
+  "brakes": {
+    "front": {
+      "max_torque": {{FRONT_BRAKE_TORQUE}},
+      "bias": {{BRAKE_BIAS}},
+      "pads": {
+        "friction": {{FRONT_PAD_FRICTION}},
+        "wear_rate": {{FRONT_PAD_WEAR}}
+      },
+      "discs": {
+        "diameter": {{FRONT_DISC_DIAMETER}},
+        "thickness": {{FRONT_DISC_THICKNESS}}
+      }
+    },
+    "rear": {
+      "max_torque": {{REAR_BRAKE_TORQUE}},
+      "bias": {{1.0 - BRAKE_BIAS}},
+      "pads": {
+        "friction": {{REAR_PAD_FRICTION}},
+        "wear_rate": {{REAR_PAD_WEAR}}
+      },
+      "discs": {
+        "diameter": {{REAR_DISC_DIAMETER}},
+        "thickness": {{REAR_DISC_THICKNESS}}
+      }
+    },
+    "handbrake": {
+      "max_torque": {{HANDBRAKE_TORQUE}},
+      "bias": 1.0
+    }
+  },
+  "drivetrain": {
+    "type": "{{DRIVETRAIN_TYPE}}",
+    "front_bias": {{FRONT_BIAS}},
+    "rear_bias": {{REAR_BIAS}},
+    "differential": {
+      "front": {
+        "type": "{{FRONT_DIFF_TYPE}}",
+        "lock": {{FRONT_DIFF_LOCK}}
+      },
+      "rear": {
+        "type": "{{REAR_DIFF_TYPE}}",
+        "lock": {{REAR_DIFF_LOCK}}
+      },
+      "center": {
+        "type": "{{CENTER_DIFF_TYPE}}",
+        "lock": {{CENTER_DIFF_LOCK}}
+      }
+    }
+  },
+  "tires": {
+    "front": {
+      "compound": "{{TIRE_COMPOUND}}",
+      "grip": {{FRONT_TIRE_GRIP}},
+      "wear_rate": {{FRONT_TIRE_WEAR}},
+      "heat_build_up": {{FRONT_TIRE_HEAT}},
+      "optimal_temp": {{OPTIMAL_TIRE_TEMP}}
+    },
+    "rear": {
+      "compound": "{{TIRE_COMPOUND}}",
+      "grip": {{REAR_TIRE_GRIP}},
+      "wear_rate": {{REAR_TIRE_WEAR}},
+      "heat_build_up": {{REAR_TIRE_HEAT}},
+      "optimal_temp": {{OPTIMAL_TIRE_TEMP}}
+    }
+  },
+  "fuel": {
+    "capacity": {{FUEL_CAPACITY}},
+    "consumption_rate": {{FUEL_CONSUMPTION}},
+    "type": "{{FUEL_TYPE}}"
+  },
+  "cooling": {
+    "radiator_capacity": {{RADIATOR_CAPACITY}},
+    "oil_cooler": {{OIL_COOLER}},
+    "brake_cooling": {{BRAKE_COOLING}}
+  },
+  "electronics": {
+    "traction_control": {
+      "enabled": true,
+      "strength": {{TC_STRENGTH}}
+    },
+    "abs": {
+      "enabled": true,
+      "strength": {{ABS_STRENGTH}}
+    },
+    "esc": {
+      "enabled": false,
+      "strength": 0.0
+    }
+  }
+}

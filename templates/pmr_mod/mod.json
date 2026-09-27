@@ -1,0 +1,35 @@
+{
+  "name": "{{MOD_NAME}}",
+  "version": "{{MOD_VERSION}}",
+  "author": "{{MOD_AUTHOR}}",
+  "description": "{{MOD_DESCRIPTION}}",
+  "type": "car",
+  "tags": ["car", "converted"],
+  "compatibility": {
+    "pmr_version": "1.0.0",
+    "game_version": "1.0.0",
+    "minimum_version": "1.0.0"
+  },
+  "dependencies": [],
+  "conflicts": [],
+  "installation": {
+    "method": "copy",
+    "destination": "cars"
+  },
+  "metadata": {
+    "created": "{{CREATION_DATE}}",
+    "created_by": "PMR Forge",
+    "source_format": "{{SOURCE_FORMAT}}",
+    "conversion_options": {
+      "convert_textures": {{CONVERT_TEXTURES}},
+      "generate_physics": {{GENERATE_PHYSICS}},
+      "create_lods": {{CREATE_LODS}},
+      "optimize_model": {{OPTIMIZE_MODEL}},
+      "include_interior": {{INCLUDE_INTERIOR}},
+      "generate_sounds": {{GENERATE_SOUNDS}},
+      "scale_factor": {{SCALE_FACTOR}},
+      "texture_quality": "{{TEXTURE_QUALITY}}",
+      "physics_preset": "{{PHYSICS_PRESET}}"
+    }
+  }
+}

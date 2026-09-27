@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMR Forge - Car Conversion Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="../../resources/icon.png" alt="PMR Forge" class="logo-icon">
+                    <span class="logo-text">PMR Forge</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" onclick="openSettings()">
+                        <span class="icon">⚙️</span> Settings
+                    </button>
+                    <button class="btn btn-secondary" onclick="openHelp()">
+                        <span class="icon">❓</span> Help
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Conversion Panel -->
+            <div class="conversion-panel">
+                <h1 class="panel-title">Car Model Conversion</h1>
+                <p class="panel-subtitle">Convert car models from various formats to PMR drivable mods</p>
+
+                <!-- Input Section -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <span class="section-icon">📁</span>
+                        Input Files
+                    </h2>
+                    <div class="form-group">
+                        <label for="inputPath" class="form-label">Source Folder</label>
+                        <div class="input-group">
+                            <input type="text" id="inputPath" class="form-input" 
+                                   placeholder="Select folder containing car model files..." readonly>
+                            <button class="btn btn-primary" onclick="selectInputFolder()">
+                                Browse...
+                            </button>
+                        </div>
+                        <p class="form-hint">Supported formats: OBJ, FBX, GLB, Assetto Corsa, rFactor, GTR2, Automobilista 1</p>
+                    </div>
+
+                    <!-- Detected Format -->
+                    <div class="form-group" id="detectedFormatGroup" style="display: none;">
+                        <label class="form-label">Detected Format</label>
+                        <div class="detected-format">
+                            <span id="detectedFormat">Unknown</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Section -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <span class="section-icon">📂</span>
+                        Output Settings
+                    </h2>
+                    <div class="form-group">
+                        <label for="outputPath" class="form-label">Output Folder</label>
+                        <div class="input-group">
+                            <input type="text" id="outputPath" class="form-input" 
+                                   placeholder="Select output folder for PMR mod..." readonly>
+                            <button class="btn btn-primary" onclick="selectOutputFolder()">
+                                Browse...
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modName" class="form-label">Mod Name</label>
+                        <input type="text" id="modName" class="form-input" 
+                               placeholder="My Awesome Car Mod">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modVersion" class="form-label">Version</label>
+                        <input type="text" id="modVersion" class="form-input" 
+                               placeholder="1.0.0" value="1.0.0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="modAuthor" class="form-label">Author</label>
+                        <input type="text" id="modAuthor" class="form-input" 
+                               placeholder="Your Name">
+                    </div>
+                </div>
+
+                <!-- Conversion Options -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <span class="section-icon">⚙️</span>
+                        Conversion Options
+                    </h2>
+                    <div class="options-grid">
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="convertTextures" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>Convert Textures</span>
+                            </label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="generatePhysics" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>Generate Physics</span>
+                            </label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="createLODs" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>Create LODs</span>
+                            </label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="optimizeModel" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>Optimize Model</span>
+                            </label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="includeInterior" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>Include Interior</span>
+                            </label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="generateSounds" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>Generate Sounds</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Options -->
+                    <div class="advanced-options" id="advancedOptions">
+                        <button class="btn btn-link" onclick="toggleAdvancedOptions()">
+                            <span id="advancedToggleText">Show Advanced Options</span>
+                            <span class="icon">🔽</span>
+                        </button>
+                        <div class="advanced-content" id="advancedContent" style="display: none;">
+                            <div class="form-group">
+                                <label for="scaleFactor" class="form-label">Scale Factor</label>
+                                <input type="number" id="scaleFactor" class="form-input" 
+                                       placeholder="1.0" value="1.0" step="0.01">
+                                <p class="form-hint">Adjust model scale (1.0 = original size)</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="textureQuality" class="form-label">Texture Quality</label>
+                                <select id="textureQuality" class="form-select">
+                                    <option value="high">High (4K)</option>
+                                    <option value="medium" selected>Medium (2K)</option>
+                                    <option value="low">Low (1K)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="physicsPreset" class="form-label">Physics Preset</label>
+                                <select id="physicsPreset" class="form-select">
+                                    <option value="default">Default</option>
+                                    <option value="gt3">GT3</option>
+                                    <option value="gt4">GT4</option>
+                                    <option value="formula">Formula</option>
+                                    <option value="rally">Rally</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Convert Button -->
+                <div class="form-actions">
+                    <button class="btn btn-primary btn-large" id="convertBtn" 
+                            onclick="startConversion()" disabled>
+                        <span class="btn-icon">⚡</span>
+                        <span class="btn-text" id="convertBtnText">Convert to PMR Mod</span>
+                        <span class="btn-loading" id="convertBtnLoading" style="display: none;">
+                            <span class="loading-spinner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Progress Panel (Hidden by default) -->
+            <div class="progress-panel" id="progressPanel" style="display: none;">
+                <div class="progress-header">
+                    <h2>Conversion in Progress</h2>
+                    <button class="btn btn-link" onclick="cancelConversion()">Cancel</button>
+                </div>
+                <div class="progress-content">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progressBar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-percent" id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-log" id="progressLog"></div>
+                </div>
+            </div>
+
+            <!-- Success Panel (Hidden by default) -->
+            <div class="success-panel" id="successPanel" style="display: none;">
+                <div class="success-content">
+                    <div class="success-icon">✅</div>
+                    <h2>Conversion Complete!</h2>
+                    <p id="successMessage"></p>
+                    <div class="success-actions">
+                        <button class="btn btn-primary" onclick="openOutputFolder()">
+                            Open Output Folder
+                        </button>
+                        <button class="btn btn-secondary" onclick="resetForm()">
+                            Convert Another
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <span>PMR Forge v1.0.0</span>
+                    <span class="separator">|</span>
+                    <span id="pythonStatus">Checking Python...</span>
+                    <span class="separator">|</span>
+                    <span id="dependenciesStatus">Checking Dependencies...</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="openAbout()">About</a>
+                    <a href="#" onclick="openDocumentation()">Documentation</a>
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

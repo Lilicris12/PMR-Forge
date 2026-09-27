@@ -1,0 +1,99 @@
+{
+  "name": "{{MOD_NAME}}",
+  "model": {
+    "file": "models/{{MAIN_MODEL}}",
+    "scale": {{SCALE_FACTOR}},
+    "offset": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "shadow_cast": true,
+    "shadow_receive": true
+  },
+  "textures": {
+    "diffuse": "textures/diffuse.png",
+    "normal": "textures/normal.png",
+    "specular": "textures/specular.png",
+    "emissive": "textures/emissive.png",
+    "ambient_occlusion": "textures/ambient_occlusion.png"
+  },
+  "physics": "physics/physics.json",
+  "sounds": {
+    "engine": "sounds/engine.wav",
+    "exhaust": "sounds/exhaust.wav",
+    "horn": "sounds/horn.wav",
+    "tire_squeal": "sounds/tire_squeal.wav",
+    "crash": "sounds/crash.wav"
+  },
+  "lods": [
+    {
+      "distance": 50.0,
+      "file": "lods/lod1.fbx"
+    },
+    {
+      "distance": 100.0,
+      "file": "lods/lod2.fbx"
+    },
+    {
+      "distance": 200.0,
+      "file": "lods/lod3.fbx"
+    }
+  ],
+  "interior": {
+    "enabled": {{INCLUDE_INTERIOR}},
+    "model": "models/interior.fbx",
+    "camera": {
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    }
+  },
+  "features": {
+    "damage": true,
+    "dirty": true,
+    "headlights": true,
+    "brake_lights": true,
+    "reverse_lights": true,
+    "turn_signals": true,
+    "wipers": false,
+    "movable_steering_wheel": true,
+    "working_gauges": true,
+    "opening_doors": false,
+    "adjustable_seat": false
+  },
+  "camera": {
+    "near_clip": 0.1,
+    "far_clip": 1000.0,
+    "fov": 60.0,
+    "chase": {
+      "distance": 5.0,
+      "height": 1.5,
+      "angle": 15.0
+    },
+    "cockpit": {
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    }
+  },
+  "performance": {
+    "render_priority": 0,
+    "cull_distance": 500.0,
+    "occlusion_query": true
+  }
+}

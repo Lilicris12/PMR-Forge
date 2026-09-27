@@ -1,0 +1,54 @@
+{
+  "name": "pmr-forge",
+  "version": "1.0.0",
+  "description": "Desktop PC Tool for Converting Cars to Project Motor Racing Mods",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "node build/build.js",
+    "package": "npm run build && electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PMR Forge",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^29.0.0",
+    "electron-log": "^5.1.3",
+    "express": "^4.18.2",
+    "form-data": "^4.0.0",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7",
+    "python-shell": "^5.0.0",
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^24.9.0",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.0.1"
+  },
+  "build": {
+    "appId": "com.pmr.forge",
+    "productName": "PMR Forge",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "templates/**/*",
+      "resources/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "resources/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "resources/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "resources/icon.png"
+    }
+  }
+}
